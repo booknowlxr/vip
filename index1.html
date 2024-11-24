@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông Tin Thanh Toán - Luxury Girl Booking</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #000000;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+
+        margin: 0;
+      }
+      .payment-container {
+        width: 90%;
+        max-width: 600px;
+        background-color: #1a1a1a; /* Nền tối */
+        padding: 40px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Hiệu ứng bóng chữ */
+        color: #ffffff; /* Chữ vàng */ /* Chữ màu bạc sáng */
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+      }
+      h1 {
+        color: #ffffff; /* Chữ vàng */ /* Chữ màu bạc sáng */
+        font-size: 28px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+        background-color: #000000;
+        border: 1px solid #daa520; /* Viền vàng */
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Hiệu ứng bóng chữ */
+      }
+      h1:hover {
+        background-color: #ffffff; /* Nền khi hover */
+        color: #000000; /* Chữ khi hover */
+      }
+      .account-section {
+        background-color: #1a1a1a; /* Nền đen */
+        padding: 20px;
+        border: 1px solid #daa520; /* Viền vàng */
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border-left: 5px solid #ffd700;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+      }
+
+      .account-section:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(255, 206, 206, 0.2);
+      }
+      .highlight {
+        color: bold;
+        font-weight: bold;
+      }
+      .button {
+        margin: 10px; /* Tăng khoảng cách giữa các nút */
+        padding: 10px 20px;
+        background-color: #000000; /* Nền đen */
+        color: #ffd700; /* Chữ vàng */
+        border: 1px solid #daa520; /* Viền vàng */
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+      }
+
+      .button:hover {
+        background-color: #ffffff; /* Nền khi hover */
+        color: #000000; /* Chữ khi hover */
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+      }
+      .file-upload {
+        display: inline-block;
+        margin: 20px 0;
+      }
+      .file-upload input[type="file"] {
+        display: none; /* Ẩn input file mặc định */
+      }
+      .file-upload-label {
+        margin: 10px; /* Tăng khoảng cách giữa các nút */
+        padding: 10px 20px;
+        background-color: #000000; /* Nền đen */
+        color: #ffd700; /* Chữ vàng */
+        border: 1px solid #daa520; /* Viền vàng */
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+      }
+
+      .file-upload-label:hover {
+        background-color: #ffffff; /* Nền khi hover */
+        color: #000000; /* Chữ khi hover */
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+      }
+      .success-message {
+        color: green;
+        font-size: 18px;
+        margin-top: 10px;
+        display: none; /* Ẩn thông báo ban đầu */
+      }
+      .video-container {
+        margin-top: 20px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="payment-container">
+      <h1>LUXURY GIRL BOOKING</h1>
+      <p
+        style="
+          color: #ffd700;
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        "
+      >
+        Để góp phần giúp hệ thống luôn luôn vận hành ổn định và duy trì một mạng
+        lưới linh hoạt mang đến sự phục vụ tốt nhất cho khách hàng . Hệ thống
+        gái gọi GIRL LUXURY BOOKING yêu cầu khách hàng lần đầu sử dụng dịch vụ
+        trên website hệ thống thanh toán khoản đăng ký nhận mã đặt lịch 29.000
+        WON ( 522.000 VND ) . Số tiền này sẽ được xung vào quỹ ưu đãi dành cho
+        khách hàng lần đầu sử dụng dịch vụ . Đặc biệt , hệ thống sẽ trích từ quỹ
+        trên để chi trả phí đi lại và khám sức khỏe định kì của bé . Còn về
+        khoản dịch vụ sẽ được quý khách thanh toán trực tiếp cho nhân viên sau
+        khi đã sử dụng dịch vụ để đảm bảo tính minh bạch và tiện lợi trong quá
+        trình giao dịch. Cảm ơn cộng đồng GIRL LUXURY BOOKING đã tham gia và ủng
+        hộ nhiệt tình . Bạn trao cho chúng tôi niềm tin , chúng tôi sẽ mang lại
+        sự uy tín và hài lòng cho bạn.
+      </p>
+
+      <h3>Thông Tin Thanh Toán</h3>
+      <!-- Tài khoản HANA BANK -->
+      <div class="account-section">
+        <p class="account-heading">Tài khoản HANA BANK</p>
+        <p>
+          <strong>Ngân hàng:</strong>
+          <span class="highlight">HANA BANK (하나은행)</span>
+        </p>
+        <p>
+          <strong>Số tài khoản:</strong>
+          <span class="highlight" id="hana-account"> 40191043261607</span>
+          <button class="button" onclick="copyToClipboard('hana-account')">
+            Sao chép
+          </button>
+        </p>
+        <p>
+          <strong>Chủ tài khoản:</strong>
+          <span class="highlight">Hoang Manh Hung</span>
+        </p>
+      </div>
+
+      <!-- Tài khoản TPBANK -->
+      <div class="account-section">
+        <p class="account-heading">Tài khoản TPBANK</p>
+        <p>
+          <strong>Ngân hàng:</strong>
+          <span class="highlight">TPBANK</span>
+        </p>
+        <p>
+          <strong>Số tài khoản:</strong>
+          <span class="highlight" id="tp-account">00006001701</span>
+          <button class="button" onclick="copyToClipboard('tp-account')">
+            Sao chép
+          </button>
+        </p>
+        <p>
+          <strong>Chủ tài khoản:</strong>
+          <span class="highlight">BÙI THỊ MỸ AN</span>
+        </p>
+      </div>
+
+      <!-- Tài khoản SHB -->
+      <div class="account-section">
+        <p class="account-heading">Tài khoản SHB</p>
+        <p>
+          <strong>Ngân hàng:</strong>
+          <span class="highlight">SHB</span>
+        </p>
+        <p>
+          <strong>Số tài khoản:</strong>
+          <span class="highlight" id="shb-account">1023606558</span>
+          <button class="button" onclick="copyToClipboard('shb-account')">
+            Sao chép
+          </button>
+        </p>
+        <p>
+          <strong>Chủ tài khoản:</strong>
+          <span class="highlight">BÙI THỊ MỸ AN</span>
+        </p>
+      </div>
+
+      <p style="color: #ffffff; font-size: 16px">
+        Hãy chắc chắn rằng bạn đã thanh toán đầy đủ theo yêu cầu trên. Sau khi
+        hoàn tất, bạn có thể nhận mã đặt lịch và tiếp tục sử dụng các dịch vụ
+        của chúng tôi.
+      </p>
+
+      <!-- Gửi Hình Ảnh Thanh Toán -->
+      <div class="file-upload">
+        <label class="file-upload-label" for="imageInput"
+          >Chọn hình ảnh thanh toán</label
+        >
+        <input type="file" id="imageInput" accept="image/*" />
+      </div>
+      <button class="button" onclick="uploadImage()">
+        Gửi Hình Ảnh Thanh Toán
+      </button>
+
+      <div class="success-message" id="successMessage">
+        <span>&#10004;</span> Gửi thành công!
+      </div>
+
+      <!-- Nút Trang Chủ -->
+      <button
+        class="button"
+        onclick="window.location.href='https://gaigoinhanh.github.io/girlluxury/'"
+      >
+        Trang Chủ
+      </button>
+    </div>
+
+    <script>
+      function copyToClipboard(accountId) {
+        const accountNumber = document.getElementById(accountId).innerText;
+        navigator.clipboard.writeText(accountNumber).then(() => {
+          alert("Đã sao chép số tài khoản: " + accountNumber);
+        });
+      }
+
+      function uploadImage() {
+        const imageInput = document.getElementById("imageInput");
+        const successMessage = document.getElementById("successMessage");
+        const file = imageInput.files[0];
+
+        if (!file) {
+          alert("Vui lòng chọn hình ảnh.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        fetch(
+          "https://api.imgbb.com/1/upload?key=58ab89193ef752956046e1702ab24402",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              const imageUrl = data.data.url;
+              const telegramMessage = "Hình ảnh thanh toán: " + imageUrl;
+              const telegramUrl = `https://telegram.me/share/url?url=${encodeURIComponent(
+                telegramMessage
+              )}`;
+              window.open(telegramUrl, "_blank");
+
+              // Hiển thị thông báo thành công
+              successMessage.style.display = "block";
+              setTimeout(() => {
+                successMessage.style.display = "none";
+              }, 3000); // Ẩn thông báo sau 3 giây
+            } else {
+              alert("Gửi hình ảnh không thành công.");
+            }
+          })
+          .catch((error) => {
+            alert("Có lỗi xảy ra: " + error);
+          });
+      }
+
+      function showVideoGuide() {
+        const videoContainer = document.getElementById("videoContainer");
+        videoContainer.style.display =
+          videoContainer.style.display === "none" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>
